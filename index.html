@@ -4,57 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio | Desarrollador Web</title>
+    <title>MYREM.DEV | Desarrollador Web</title>
 
-    <meta name="description"
-    content="Portafolio personal de desarrollo web. Explora mis proyectos, habilidades y trabajos.">
+    <meta name="description" content="Portfolio de MYREM. Desarrollo web, programación y proyectos digitales.">
+    <meta name="author" content="MYREM">
+    <meta name="theme-color" content="#080b12">
 
-    <meta name="theme-color" content="#080a10">
+    <meta property="og:title" content="MYREM.DEV | Portfolio">
+    <meta property="og:description" content="Explora mis proyectos y experimentos digitales.">
+    <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #080a10;
-            --surface: #10141e;
-            --surface-light: #171d2a;
-            --text: #f1f5ff;
+            --bg: #080b12;
+            --bg-secondary: #0d111b;
+            --card: #111724;
+            --border: rgba(255,255,255,.09);
+            --text: #f2f5fc;
             --muted: #929bad;
-            --accent: #638cff;
-            --accent-light: #91adff;
-            --border: rgba(255,255,255,0.09);
+            --blue: #548cff;
+            --cyan: #66d9ef;
+            --mono: 'DM Mono', monospace;
+            --font: 'Space Grotesk', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
+            scroll-padding-top: 90px;
         }
 
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: var(--font);
             overflow-x: hidden;
         }
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
         button {
             font: inherit;
         }
 
+        ::selection {
+            background: var(--blue);
+            color: white;
+        }
+
         .container {
-            width: min(1100px, 90%);
+            width: min(1120px, 90%);
             margin: auto;
+        }
+
+        .mono {
+            font-family: var(--mono);
+        }
+
+        .blue {
+            color: var(--blue);
         }
 
         /* NAVBAR */
@@ -64,7 +85,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(8,10,16,0.82);
+            background: rgba(8,11,18,.82);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
         }
@@ -72,8 +93,8 @@
         nav {
             height: 76px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
@@ -83,30 +104,43 @@
         }
 
         .logo span {
-            color: var(--accent);
+            color: var(--blue);
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            align-items: center;
+            gap: 34px;
             list-style: none;
         }
 
         .nav-links a {
-            font-size: 14px;
             color: var(--muted);
+            font-size: 13px;
             transition: .3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent-light);
+            color: white;
         }
 
-        .menu-btn {
+        .nav-button {
+            border: 1px solid rgba(84,140,255,.5);
+            color: var(--blue) !important;
+            padding: 11px 17px;
+            border-radius: 7px;
+        }
+
+        .nav-button:hover {
+            background: var(--blue);
+            color: white !important;
+        }
+
+        .menu-toggle {
             display: none;
             background: none;
-            border: none;
             color: white;
+            border: none;
             font-size: 25px;
             cursor: pointer;
         }
@@ -114,7 +148,8 @@
         /* HERO */
 
         .hero {
-            min-height: 100vh;
+            min-height: 760px;
+            padding: 170px 0 100px;
             display: flex;
             align-items: center;
             position: relative;
@@ -124,178 +159,238 @@
         .hero::before {
             content: "";
             position: absolute;
-            width: 550px;
-            height: 550px;
-            background: var(--accent);
-            filter: blur(180px);
-            opacity: .13;
-            right: -150px;
-            top: 100px;
+            width: 600px;
+            height: 600px;
+            background: rgba(52,105,255,.12);
+            filter: blur(140px);
             border-radius: 50%;
+            top: 80px;
+            left: -250px;
+            pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            padding-top: 70px;
-        }
-
-        .tag {
-            display: inline-flex;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
             align-items: center;
-            gap: 10px;
-            padding: 9px 15px;
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            color: var(--accent-light);
-            font-family: 'DM Mono', monospace;
-            font-size: 12px;
-            margin-bottom: 28px;
+            gap: 60px;
+            position: relative;
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: #64e6a0;
-            border-radius: 50%;
-            box-shadow: 0 0 12px #64e6a0;
+        .eyebrow {
+            color: var(--blue);
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 25px;
+            height: 1px;
+            background: var(--blue);
         }
 
         .hero h1 {
-            font-size: clamp(42px, 8vw, 88px);
+            font-size: clamp(44px, 6vw, 76px);
             line-height: 1.04;
-            letter-spacing: -5px;
-            max-width: 850px;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
-            color: var(--accent);
+            color: var(--blue);
         }
 
-        .hero p {
+        .hero-description {
             color: var(--muted);
-            font-size: 17px;
-            line-height: 1.8;
-            max-width: 560px;
-            margin-top: 25px;
+            font-size: 16px;
+            line-height: 1.9;
+            max-width: 510px;
+            margin-bottom: 35px;
         }
 
-        .hero-buttons {
+        .hero-actions {
             display: flex;
-            gap: 15px;
-            margin-top: 35px;
             flex-wrap: wrap;
+            gap: 14px;
         }
 
-        .btn {
-            padding: 14px 23px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: .3s;
+        .button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
+            padding: 15px 23px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .3s;
         }
 
-        .btn-primary {
-            background: var(--accent);
+        .button-primary {
+            background: var(--blue);
             color: white;
         }
 
-        .btn-primary:hover {
-            background: #4774ed;
+        .button-primary:hover {
+            background: #3975f4;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(99,140,255,.2);
         }
 
-        .btn-secondary {
+        .button-secondary {
             border: 1px solid var(--border);
             color: var(--text);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent-light);
+        .button-secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
         }
 
-        .scroll-indicator {
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            opacity: .85;
+        }
+
+        .image-overlay {
             position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--muted);
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
+            inset: 0;
+            border-radius: 14px;
+            background: linear-gradient(
+                0deg,
+                rgba(8,11,18,.75),
+                transparent 70%
+            );
         }
 
-        /* SECTIONS */
+        .floating-card {
+            position: absolute;
+            bottom: -25px;
+            left: -35px;
+            background: #111724;
+            border: 1px solid var(--border);
+            padding: 19px 23px;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
+        }
+
+        .floating-card small {
+            display: block;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 10px;
+            margin-bottom: 8px;
+        }
+
+        .floating-card strong {
+            font-size: 15px;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #51dc9b;
+            border-radius: 50%;
+            margin-right: 7px;
+            box-shadow: 0 0 10px #51dc9b;
+        }
+
+        /* GENERAL SECTIONS */
 
         section {
             padding: 110px 0;
-            scroll-margin-top: 75px;
+        }
+
+        .section-heading {
+            margin-bottom: 55px;
         }
 
         .section-label {
-            font-family: 'DM Mono', monospace;
-            color: var(--accent);
-            font-size: 12px;
+            font-family: var(--mono);
+            color: var(--blue);
+            font-size: 11px;
             letter-spacing: 2px;
             margin-bottom: 15px;
         }
 
-        .section-title {
-            font-size: clamp(32px, 5vw, 48px);
+        .section-heading h2 {
+            font-size: clamp(32px, 4vw, 45px);
             letter-spacing: -2px;
-            margin-bottom: 18px;
         }
 
-        .section-description {
+        .section-heading p {
             color: var(--muted);
+            margin-top: 14px;
             line-height: 1.8;
-            max-width: 600px;
+            max-width: 580px;
+            font-size: 14px;
         }
 
         /* ABOUT */
 
+        .about {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
         .about-grid {
             display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 70px;
+            grid-template-columns: 1fr 1fr;
+            gap: 75px;
             align-items: center;
-            margin-top: 45px;
         }
 
-        .about-text p {
-            color: var(--muted);
-            line-height: 1.9;
-            margin-bottom: 18px;
-        }
-
-        .about-card {
-            background: linear-gradient(145deg, #141b2a, #0c1018);
+        .about-image {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 12px;
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 35px;
         }
 
-        .about-card h3 {
-            font-size: 19px;
+        .about-content h3 {
+            font-size: 29px;
             margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
-        .about-card p {
+        .about-content p {
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.8;
+            line-height: 2;
+            margin-bottom: 17px;
         }
 
-        .code-symbol {
-            font-family: 'DM Mono', monospace;
-            font-size: 50px;
-            color: var(--accent);
-            margin-bottom: 20px;
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .tag {
+            background: rgba(84,140,255,.09);
+            border: 1px solid rgba(84,140,255,.2);
+            color: #8db1ff;
+            padding: 9px 13px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: var(--mono);
         }
 
         /* SKILLS */
@@ -304,193 +399,174 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            margin-top: 45px;
         }
 
-        .skill {
-            padding: 25px;
-            background: var(--surface);
+        .skill-card {
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            padding: 27px;
+            border-radius: 10px;
             transition: .3s;
         }
 
-        .skill:hover {
+        .skill-card:hover {
+            border-color: rgba(84,140,255,.6);
             transform: translateY(-5px);
-            border-color: var(--accent);
         }
 
         .skill-icon {
             font-size: 27px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
-        .skill h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
+        .skill-card h3 {
+            font-size: 17px;
+            margin-bottom: 9px;
         }
 
-        .skill p {
-            font-size: 12px;
+        .skill-card p {
             color: var(--muted);
-            line-height: 1.6;
+            font-size: 12px;
+            line-height: 1.7;
         }
 
         /* PROJECTS */
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            margin-top: 45px;
+        .projects {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .project {
-            background: var(--surface);
+        .project-card {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 13px;
             overflow: hidden;
             transition: .3s;
         }
 
-        .project:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99,140,255,.6);
+        .project-card:hover {
+            border-color: rgba(84,140,255,.5);
         }
 
-        .project-preview {
-            min-height: 260px;
-            background:
-                radial-gradient(circle at 70% 40%, rgba(99,140,255,.25), transparent 35%),
-                linear-gradient(135deg, #161c2a, #090d15);
+        .project-image-container {
+            min-height: 360px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.04);
+        }
+
+        .project-content {
+            padding: 45px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            padding: 30px;
-        }
-
-        .preview-window {
-            width: min(430px, 100%);
-            background: #080a10;
-            border: 1px solid rgba(255,255,255,.15);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.4);
-        }
-
-        .window-dots {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 18px;
-        }
-
-        .window-dots span {
-            width: 7px;
-            height: 7px;
-            background: #596274;
-            border-radius: 50%;
-        }
-
-        .preview-content {
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        .preview-content h3 {
-            font-size: 30px;
-            letter-spacing: 4px;
-        }
-
-        .preview-content span {
-            color: #c6a46c;
-        }
-
-        .preview-content p {
-            font-size: 10px;
-            color: #929bad;
-            margin-top: 10px;
-        }
-
-        .project-info {
-            padding: 28px;
-        }
-
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .project-top h3 {
-            font-size: 22px;
         }
 
         .project-status {
-            color: #64e6a0;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            color: #51dc9b;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
         }
 
-        .project-info > p {
+        .project-content h3 {
+            font-size: 32px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
             color: var(--muted);
-            line-height: 1.8;
-            font-size: 14px;
-            margin: 17px 0;
-        }
-
-        .tech-list {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
+            font-size: 13px;
+            line-height: 1.9;
             margin-bottom: 25px;
         }
 
-        .tech-list span {
-            background: var(--surface-light);
-            padding: 7px 11px;
-            border-radius: 5px;
-            font-size: 11px;
-            color: var(--accent-light);
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 30px;
+        }
+
+        .project-tech span {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: #a7b8d7;
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--border);
+            padding: 8px 11px;
+            border-radius: 4px;
         }
 
         .project-link {
-            color: var(--accent-light);
-            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            font-size: 13px;
             font-weight: 600;
+            width: fit-content;
         }
 
         .project-link:hover {
-            color: white;
+            color: var(--cyan);
+        }
+
+        .coming-soon {
+            margin-top: 25px;
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
         }
 
         /* CONTACT */
 
         .contact-box {
-            margin-top: 40px;
-            padding: 55px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background:
-                radial-gradient(circle at top right, rgba(99,140,255,.13), transparent 45%),
-                var(--surface);
             text-align: center;
+            padding: 65px 30px;
+            border: 1px solid rgba(84,140,255,.22);
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(84,140,255,.12),
+                    transparent 65%
+                ),
+                var(--card);
+            border-radius: 14px;
         }
 
-        .contact-box h3 {
-            font-size: clamp(25px, 4vw, 38px);
-            margin-bottom: 15px;
+        .contact-box h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: -2px;
+            margin-bottom: 18px;
         }
 
         .contact-box p {
             color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto 30px;
+            font-size: 14px;
             line-height: 1.8;
-            max-width: 500px;
-            margin: auto;
-        }
-
-        .contact-box .btn {
-            margin-top: 28px;
         }
 
         /* FOOTER */
@@ -502,11 +578,23 @@
 
         .footer-content {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-content p {
             color: var(--muted);
-            font-size: 12px;
+            font-size: 11px;
+        }
+
+        .footer-logo {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: var(--blue);
         }
 
         /* ANIMATIONS */
@@ -524,27 +612,54 @@
 
         /* RESPONSIVE */
 
-        @media(max-width: 800px) {
-            .about-grid {
+        @media(max-width: 850px) {
+
+            .hero-grid,
+            .about-grid,
+            .project-card {
                 grid-template-columns: 1fr;
-                gap: 30px;
+            }
+
+            .hero {
+                padding-top: 145px;
+            }
+
+            .hero-grid {
+                gap: 55px;
+            }
+
+            .hero-visual {
+                max-width: 600px;
+            }
+
+            .about-grid {
+                gap: 35px;
             }
 
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero h1 {
-                letter-spacing: -3px;
+            .project-image-container {
+                min-height: 280px;
+            }
+
+            .project-image {
+                min-height: 280px;
+            }
+
+            .project-content {
+                padding: 35px;
             }
         }
 
         @media(max-width: 600px) {
+
             nav {
                 height: 68px;
             }
 
-            .menu-btn {
+            .menu-toggle {
                 display: block;
             }
 
@@ -558,6 +673,7 @@
                 background: #0d111b;
                 border-bottom: 1px solid var(--border);
                 flex-direction: column;
+                align-items: stretch;
                 gap: 22px;
             }
 
@@ -565,32 +681,72 @@
                 display: flex;
             }
 
-            .hero {
-                min-height: 90vh;
+            .nav-links a {
+                display: block;
+                font-size: 14px;
             }
 
-            .hero p {
-                font-size: 15px;
+            .hero {
+                min-height: auto;
+                padding: 130px 0 90px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2.5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .floating-card {
+                left: 10px;
+                bottom: -30px;
             }
 
             section {
                 padding: 80px 0;
             }
 
+            .section-heading {
+                margin-bottom: 38px;
+            }
+
             .skills-grid {
+                grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
 
-            .skill {
-                padding: 18px;
+            .skill-card {
+                padding: 19px;
+            }
+
+            .skill-card h3 {
+                font-size: 14px;
+            }
+
+            .skill-card p {
+                font-size: 11px;
+            }
+
+            .about-image {
+                height: 270px;
+            }
+
+            .project-content {
+                padding: 25px;
+            }
+
+            .project-content h3 {
+                font-size: 27px;
             }
 
             .contact-box {
-                padding: 35px 20px;
-            }
-
-            .scroll-indicator {
-                display: none;
+                padding: 45px 20px;
             }
 
             .footer-content {
@@ -600,10 +756,17 @@
         }
 
         @media(prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+            *,
+            *::before,
+            *::after {
                 scroll-behavior: auto !important;
-                transition-duration: .01ms !important;
                 animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
@@ -611,360 +774,469 @@
 
 <body>
 
-<header>
-    <nav class="container">
+    <!-- NAVBAR -->
 
-        <a href="#inicio" class="logo">
-            DEV<span>.</span>PORTFOLIO
-        </a>
+    <header>
+        <nav class="container">
 
-        <button class="menu-btn"
-        id="menu-btn"
-        aria-label="Abrir menú"
-        aria-expanded="false">
-            ☰
-        </button>
+            <a href="#inicio" class="logo">
+                MYREM<span>.DEV</span>
+            </a>
 
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
 
-    </nav>
-</header>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#tecnologias">Tecnologías</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto" class="nav-button">Contacto ↗</a></li>
+            </ul>
 
-
-<main>
-
-    <!-- INICIO -->
-
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-
-            <div class="tag">
-                <span class="dot"></span>
-                DESARROLLADOR EN FORMACIÓN
-            </div>
-
-            <h1>
-                Transformando ideas
-                en <span>experiencias digitales.</span>
-            </h1>
-
-            <p>
-                Me interesa el desarrollo web y la tecnología.
-                Construyo proyectos digitales combinando diseño,
-                creatividad y programación.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#proyectos" class="btn btn-primary">
-                    Explorar proyectos →
-                </a>
-
-                <a href="#sobre-mi" class="btn btn-secondary">
-                    Conocer más
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="scroll-indicator">
-            SCROLL PARA EXPLORAR ↓
-        </div>
-    </section>
+        </nav>
+    </header>
 
 
-    <!-- SOBRE MI -->
+    <!-- HERO -->
 
-    <section id="sobre-mi">
-        <div class="container reveal">
+    <main>
 
-            <div class="section-label">01 / SOBRE MÍ</div>
+        <section class="hero" id="inicio">
 
-            <h2 class="section-title">
-                Detrás del código.
-            </h2>
+            <div class="container hero-grid">
 
-            <div class="about-grid">
+                <div class="hero-content reveal">
 
-                <div class="about-text">
+                    <div class="eyebrow">
+                        DESARROLLADOR EN FORMACIÓN
+                    </div>
 
-                    <p>
-                        Soy una persona interesada en la programación,
-                        el desarrollo de software y la tecnología.
+                    <h1>
+                        Hola, soy <span>MYREM.</span><br>
+                        Construyo experiencias digitales.
+                    </h1>
+
+                    <p class="hero-description">
+                        Me apasiona la programación, el diseño y la tecnología.
+                        Desarrollo proyectos digitales combinando creatividad,
+                        funcionalidad y aprendizaje constante.
                     </p>
 
+                    <div class="hero-actions">
+
+                        <a href="#proyectos" class="button button-primary">
+                            Explorar proyectos ↗
+                        </a>
+
+                        <a href="#sobre-mi" class="button button-secondary">
+                            Conocer más
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual reveal">
+
+                    <img
+                        class="hero-image"
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1100&q=85"
+                        alt="Espacio de trabajo con un ordenador y herramientas de programación"
+                        fetchpriority="high">
+
+                    <div class="image-overlay"></div>
+
+                    <div class="floating-card">
+
+                        <small>ESTADO ACTUAL</small>
+
+                        <strong>
+                            <span class="status-dot"></span>
+                            Construyendo proyectos
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="about" id="sobre-mi">
+
+            <div class="container about-grid">
+
+                <div class="reveal">
+
+                    <img
+                        class="about-image"
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85"
+                        alt="Entorno tecnológico y trabajo digital"
+                        loading="lazy">
+
+                </div>
+
+
+                <div class="about-content reveal">
+
+                    <div class="section-label">
+                        01 / SOBRE MÍ
+                    </div>
+
+                    <h3>
+                        Tecnología, creatividad y aprendizaje.
+                    </h3>
+
                     <p>
-                        Mi aprendizaje se basa en experimentar,
-                        construir proyectos propios y enfrentar
-                        problemas reales de programación.
+                        Soy una persona interesada en el desarrollo de
+                        software y la creación de experiencias digitales.
                     </p>
 
                     <p>
                         Actualmente estoy desarrollando mis habilidades
-                        en desarrollo web, buscando crear experiencias
-                        digitales funcionales, atractivas y accesibles.
+                        mediante proyectos propios, experimentando con
+                        distintas tecnologías y buscando nuevas formas
+                        de convertir ideas en soluciones funcionales.
                     </p>
-
-                </div>
-
-                <div class="about-card">
-
-                    <div class="code-symbol">&lt;/&gt;</div>
-
-                    <h3>Aprender construyendo.</h3>
 
                     <p>
-                        Cada proyecto es una oportunidad para aprender
-                        algo nuevo, mejorar mis habilidades y convertir
-                        una idea en algo tangible.
+                        Mi objetivo es seguir creciendo como desarrollador,
+                        construir proyectos cada vez más completos y
+                        aprender algo nuevo con cada experiencia.
                     </p>
 
-                </div>
+                    <div class="about-tags">
 
-            </div>
-        </div>
-    </section>
-
-
-    <!-- HABILIDADES -->
-
-    <section id="habilidades">
-        <div class="container reveal">
-
-            <div class="section-label">02 / HABILIDADES</div>
-
-            <h2 class="section-title">
-                Mi stack tecnológico.
-            </h2>
-
-            <p class="section-description">
-                Herramientas y tecnologías con las que he trabajado
-                durante mi aprendizaje.
-            </p>
-
-            <div class="skills-grid">
-
-                <div class="skill">
-                    <div class="skill-icon">🌐</div>
-                    <h3>HTML5</h3>
-                    <p>Estructura y organización de páginas web.</p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-icon">🎨</div>
-                    <h3>CSS3</h3>
-                    <p>Diseño, estilos y adaptación responsive.</p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-icon">⚡</div>
-                    <h3>JavaScript</h3>
-                    <p>Interactividad y funcionalidades web.</p>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-icon">🐍</div>
-                    <h3>Python</h3>
-                    <p>Programación y desarrollo de aplicaciones.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- PROYECTOS -->
-
-    <section id="proyectos">
-        <div class="container reveal">
-
-            <div class="section-label">03 / PROYECTOS</div>
-
-            <h2 class="section-title">
-                Cosas que he construido.
-            </h2>
-
-            <p class="section-description">
-                Proyectos personales desarrollados para experimentar,
-                aprender y mejorar mis habilidades.
-            </p>
-
-            <div class="projects-grid">
-
-                <article class="project">
-
-                    <div class="project-preview">
-
-                        <div class="preview-window">
-
-                            <div class="window-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                            <div class="preview-content">
-                                <h3>BLACK<span>LINES</span></h3>
-                                <p>BARBER SHOP · DEMO WEBSITE</p>
-                            </div>
-
-                        </div>
+                        <span class="tag">CREATIVIDAD</span>
+                        <span class="tag">DESARROLLO WEB</span>
+                        <span class="tag">APRENDIZAJE</span>
 
                     </div>
 
-                    <div class="project-info">
+                </div>
 
-                        <div class="project-top">
-                            <h3>BLACKLINES Barber Shop</h3>
-                            <span class="project-status">
-                                ● PUBLICADO
-                            </span>
-                        </div>
+            </div>
+
+        </section>
+
+
+        <!-- TECHNOLOGIES -->
+
+        <section id="tecnologias">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        02 / TECNOLOGÍAS
+                    </div>
+
+                    <h2>Herramientas que utilizo.</h2>
+
+                    <p>
+                        Tecnologías con las que he experimentado y que
+                        continúo explorando a través de mis proyectos.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-icon">🌐</div>
+
+                        <h3>HTML5</h3>
 
                         <p>
-                            Sitio web demostrativo para una barbería,
-                            con diseño responsive, catálogo de servicios,
-                            galería visual y formulario de reservas
-                            simulado.
+                            Estructura y organización de páginas web.
                         </p>
 
-                        <div class="tech-list">
-                            <span>HTML</span>
-                            <span>CSS</span>
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-icon">🎨</div>
+
+                        <h3>CSS3</h3>
+
+                        <p>
+                            Diseño visual, estilos y adaptación responsive.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-icon">⚡</div>
+
+                        <h3>JavaScript</h3>
+
+                        <p>
+                            Interactividad y funcionalidades para sitios web.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-icon">🐍</div>
+
+                        <h3>Python</h3>
+
+                        <p>
+                            Programación, lógica y experimentación.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section class="projects" id="proyectos">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="section-label">
+                        03 / PORTAFOLIO
+                    </div>
+
+                    <h2>Proyectos seleccionados.</h2>
+
+                    <p>
+                        Una selección de proyectos personales donde
+                        pongo en práctica mis conocimientos y creatividad.
+                    </p>
+
+                </div>
+
+
+                <!-- BLACKLINES -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-image-container">
+
+                        <img
+                            class="project-image"
+                            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1100&q=85"
+                            alt="Interior de una barbería moderna"
+                            loading="lazy">
+
+                    </div>
+
+
+                    <div class="project-content">
+
+                        <div class="project-status">
+                            ● PROYECTO PUBLICADO
+                        </div>
+
+                        <h3>BLACKLINES</h3>
+
+                        <p>
+                            Sitio web demostrativo para una barbería ficticia.
+                            Diseñado con una identidad visual oscura y elegante,
+                            incorpora una presentación de servicios, galería,
+                            formulario de reservas simulado y panel de demostración.
+                        </p>
+
+                        <div class="project-tech">
+
+                            <span>HTML5</span>
+                            <span>CSS3</span>
                             <span>JavaScript</span>
-                            <span>GitHub Pages</span>
+                            <span>Responsive</span>
+
                         </div>
 
                         <a
-                        href="https://myrem-droid.github.io/Blackline-barber-a/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link">
-                            Ver proyecto ↗
+                            href="https://myrem-droid.github.io/Blackline-barber-a/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link">
+
+                            Visitar proyecto ↗
+
                         </a>
 
                     </div>
 
                 </article>
 
-            </div>
 
-        </div>
-    </section>
+                <div class="coming-soon reveal">
 
+                    <span class="blue">+</span>
+                    Nuevos proyectos en desarrollo.
 
-    <!-- CONTACTO -->
-
-    <section id="contacto">
-        <div class="container reveal">
-
-            <div class="section-label">04 / CONTACTO</div>
-
-            <div class="contact-box">
-
-                <h3>¿Tienes una idea?</h3>
-
-                <p>
-                    Estoy interesado en seguir aprendiendo,
-                    desarrollar nuevos proyectos y conectar
-                    con personas apasionadas por la tecnología.
-                </p>
-
-                <a
-                href="https://github.com/myrem-droid"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary">
-                    Visitar mi GitHub ↗
-                </a>
+                </div>
 
             </div>
 
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section id="contacto">
+
+            <div class="container">
+
+                <div class="contact-box reveal">
+
+                    <div class="section-label">
+                        04 / CONTACTO
+                    </div>
+
+                    <h2>
+                        Construyamos algo <span class="blue">nuevo.</span>
+                    </h2>
+
+                    <p>
+                        Siempre estoy interesado en aprender, explorar
+                        nuevas ideas y desarrollar proyectos digitales.
+                        Puedes conocer más de mi trabajo en GitHub.
+                    </p>
+
+                    <a
+                        href="https://github.com/myrem-droid"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button button-primary">
+
+                        Visitar GitHub ↗
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <a href="#inicio" class="footer-logo">
+                MYREM<span>.DEV</span>
+            </a>
+
+            <p>
+                © <span id="year"></span> MYREM. Construido con dedicación.
+            </p>
+
+            <p class="mono">
+                DESIGNED & DEVELOPED BY MYREM
+            </p>
+
         </div>
-    </section>
 
-</main>
-
-
-<footer>
-    <div class="container footer-content">
-
-        <p>© <span id="year"></span> · Portfolio personal</p>
-
-        <p>Diseñado y desarrollado con código.</p>
-
-    </div>
-</footer>
+    </footer>
 
 
-<script>
+    <!-- JAVASCRIPT -->
 
-    // MENÚ MÓVIL
+    <script>
 
-    const menuButton = document.getElementById("menu-btn");
-    const navLinks = document.getElementById("nav-links");
+        // Año automático
 
-    menuButton.addEventListener("click", () => {
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
 
-        const isOpen = navLinks.classList.toggle("active");
 
-        menuButton.setAttribute("aria-expanded", isOpen);
-        menuButton.textContent = isOpen ? "✕" : "☰";
+        // Menú móvil
 
-    });
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
 
-    // CERRAR MENÚ AL SELECCIONAR UNA SECCIÓN
+        menuToggle.addEventListener("click", () => {
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+            const isOpen = navLinks.classList.toggle("active");
 
-        link.addEventListener("click", () => {
+            menuToggle.setAttribute("aria-expanded", isOpen);
 
-            navLinks.classList.remove("active");
-            menuButton.textContent = "☰";
-            menuButton.setAttribute("aria-expanded", "false");
+            menuToggle.textContent = isOpen ? "✕" : "☰";
 
         });
 
-    });
 
-    // AÑO AUTOMÁTICO
+        // Cerrar menú al seleccionar una sección
 
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+        document.querySelectorAll(".nav-links a").forEach(link => {
 
-    // ANIMACIONES AL DESPLAZARSE
+            link.addEventListener("click", () => {
 
-    const observer = new IntersectionObserver((entries) => {
+                navLinks.classList.remove("active");
 
-        entries.forEach(entry => {
+                menuToggle.setAttribute("aria-expanded", "false");
 
-            if (entry.isIntersecting) {
+                menuToggle.textContent = "☰";
 
-                entry.target.classList.add("visible");
-
-                observer.unobserve(entry.target);
-
-            }
+            });
 
         });
 
-    }, {
-        threshold: 0.12
-    });
 
-    document.querySelectorAll(".reveal").forEach(element => {
-        observer.observe(element);
-    });
+        // Animaciones al aparecer en pantalla
 
-</script>
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+
+        document.querySelectorAll(".reveal").forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+    </script>
 
 </body>
 </html>
