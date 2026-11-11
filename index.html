@@ -6,7 +6,7 @@
 
     <title>MYREM.DEV | Desarrollador Web</title>
 
-    <meta name="description" content="Portfolio de MYREM. Desarrollo web, programación y proyectos digitales.">
+    <meta name="description" content="Portfolio de MYREM. Desarrollo web, programación y proyectos digitales: BLACKLINES y NEXORA TECH.">
     <meta name="author" content="MYREM">
     <meta name="theme-color" content="#080b12">
 
@@ -438,6 +438,12 @@
             border-bottom: 1px solid var(--border);
         }
 
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
         .project-card {
             display: grid;
             grid-template-columns: 1.05fr .95fr;
@@ -456,6 +462,7 @@
             min-height: 360px;
             position: relative;
             overflow: hidden;
+            background: #0a0d14;
         }
 
         .project-image {
@@ -463,6 +470,7 @@
             height: 100%;
             min-height: 360px;
             object-fit: cover;
+            display: block;
             transition: .6s;
         }
 
@@ -523,20 +531,34 @@
             font-size: 13px;
             font-weight: 600;
             width: fit-content;
+            transition: .3s;
         }
 
         .project-link:hover {
             color: var(--cyan);
+            gap: 15px;
         }
 
-        .coming-soon {
-            margin-top: 25px;
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 25px;
+        /* SEGUNDO PROYECTO: COMPOSICIÓN INVERTIDA */
+
+        .project-card-reverse {
+            grid-template-columns: .95fr 1.05fr;
+        }
+
+        .project-card-reverse .project-image-container {
+            order: 2;
+        }
+
+        .project-card-reverse .project-content {
+            order: 1;
+        }
+
+        .project-number {
             color: var(--muted);
-            font-size: 13px;
-            text-align: center;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
         /* CONTACT */
@@ -616,7 +638,8 @@
 
             .hero-grid,
             .about-grid,
-            .project-card {
+            .project-card,
+            .project-card-reverse {
                 grid-template-columns: 1fr;
             }
 
@@ -650,6 +673,11 @@
 
             .project-content {
                 padding: 35px;
+            }
+
+            .project-card-reverse .project-image-container,
+            .project-card-reverse .project-content {
+                order: initial;
             }
         }
 
@@ -745,6 +773,14 @@
                 font-size: 27px;
             }
 
+            .project-image-container {
+                min-height: 230px;
+            }
+
+            .project-image {
+                min-height: 230px;
+            }
+
             .contact-box {
                 padding: 45px 20px;
             }
@@ -804,9 +840,9 @@
     </header>
 
 
-    <!-- HERO -->
-
     <main>
+
+        <!-- HERO -->
 
         <section class="hero" id="inicio">
 
@@ -957,54 +993,27 @@
                 <div class="skills-grid">
 
                     <article class="skill-card reveal">
-
                         <div class="skill-icon">🌐</div>
-
                         <h3>HTML5</h3>
-
-                        <p>
-                            Estructura y organización de páginas web.
-                        </p>
-
+                        <p>Estructura y organización de páginas web.</p>
                     </article>
 
-
                     <article class="skill-card reveal">
-
                         <div class="skill-icon">🎨</div>
-
                         <h3>CSS3</h3>
-
-                        <p>
-                            Diseño visual, estilos y adaptación responsive.
-                        </p>
-
+                        <p>Diseño visual, estilos y adaptación responsive.</p>
                     </article>
 
-
                     <article class="skill-card reveal">
-
                         <div class="skill-icon">⚡</div>
-
                         <h3>JavaScript</h3>
-
-                        <p>
-                            Interactividad y funcionalidades para sitios web.
-                        </p>
-
+                        <p>Interactividad y funcionalidades para sitios web.</p>
                     </article>
 
-
                     <article class="skill-card reveal">
-
                         <div class="skill-icon">🐍</div>
-
                         <h3>Python</h3>
-
-                        <p>
-                            Programación, lógica y experimentación.
-                        </p>
-
+                        <p>Programación, lógica y experimentación.</p>
                     </article>
 
                 </div>
@@ -1036,64 +1045,120 @@
                 </div>
 
 
-                <!-- BLACKLINES -->
+                <div class="projects-list">
 
-                <article class="project-card reveal">
+                    <!-- PROJECT 01: BLACKLINES -->
 
-                    <div class="project-image-container">
+                    <article class="project-card reveal">
 
-                        <img
-                            class="project-image"
-                            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1100&q=85"
-                            alt="Interior de una barbería moderna"
-                            loading="lazy">
+                        <div class="project-image-container">
 
-                    </div>
-
-
-                    <div class="project-content">
-
-                        <div class="project-status">
-                            ● PROYECTO PUBLICADO
-                        </div>
-
-                        <h3>BLACKLINES</h3>
-
-                        <p>
-                            Sitio web demostrativo para una barbería ficticia.
-                            Diseñado con una identidad visual oscura y elegante,
-                            incorpora una presentación de servicios, galería,
-                            formulario de reservas simulado y panel de demostración.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Responsive</span>
+                            <img
+                                class="project-image"
+                                src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1100&q=85"
+                                alt="Interior de una barbería moderna"
+                                loading="lazy">
 
                         </div>
 
-                        <a
-                            href="https://myrem-droid.github.io/Blackline-barber-a/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="project-link">
 
-                            Visitar proyecto ↗
+                        <div class="project-content">
 
-                        </a>
+                            <div class="project-number">
+                                PROYECTO 01 / WEB COMERCIAL
+                            </div>
 
-                    </div>
+                            <div class="project-status">
+                                ● PROYECTO PUBLICADO
+                            </div>
 
-                </article>
+                            <h3>BLACKLINES</h3>
+
+                            <p>
+                                Sitio web demostrativo para una barbería ficticia.
+                                Diseñado con una identidad visual oscura y elegante,
+                                incorpora una presentación de servicios, galería,
+                                formulario de reservas simulado y panel de demostración.
+                            </p>
+
+                            <div class="project-tech">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>Responsive</span>
+                            </div>
+
+                            <a
+                                href="https://myrem-droid.github.io/Blackline-barber-a/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link">
+
+                                Visitar proyecto ↗
+
+                            </a>
+
+                        </div>
+
+                    </article>
 
 
-                <div class="coming-soon reveal">
+                    <!-- PROJECT 02: NEXORA TECH -->
 
-                    <span class="blue">+</span>
-                    Nuevos proyectos en desarrollo.
+                    <article class="project-card project-card-reverse reveal">
+
+                        <div class="project-image-container">
+
+                            <img
+                                class="project-image"
+                                src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1100&q=85"
+                                alt="Productos tecnológicos y dispositivos electrónicos"
+                                loading="lazy">
+
+                        </div>
+
+
+                        <div class="project-content">
+
+                            <div class="project-number">
+                                PROYECTO 02 / E-COMMERCE
+                            </div>
+
+                            <div class="project-status">
+                                ● PROYECTO PUBLICADO
+                            </div>
+
+                            <h3>NEXORA TECH</h3>
+
+                            <p>
+                                Tienda tecnológica demostrativa con una identidad
+                                visual industrial y contemporánea. Incluye catálogo
+                                de productos, búsqueda, filtros por categoría,
+                                ordenamiento, favoritos, carrito de compras y un
+                                proceso de checkout simulado.
+                            </p>
+
+                            <div class="project-tech">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>LocalStorage</span>
+                                <span>Responsive</span>
+                            </div>
+
+                            <a
+                                href="https://myrem-droid.github.io/nexora-tech/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link">
+
+                                Visitar proyecto ↗
+
+                            </a>
+
+                        </div>
+
+                    </article>
 
                 </div>
 
